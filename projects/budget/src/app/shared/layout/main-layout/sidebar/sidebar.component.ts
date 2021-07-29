@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBreadcrumb } from '@app/shared/shared-common/breadcrumb/breadcrumb.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { INavItem } from './models/nav-item.interface';
+import { ISidebarItem } from './models/nav-item.interface';
 
 @Component({
   selector: 'nicico-sidebar',
@@ -13,13 +13,21 @@ import { INavItem } from './models/nav-item.interface';
 export class SidebarComponent implements OnInit {
   public isCollapseMenu = false;
   public breadcrumb: IBreadcrumb[] | undefined = [];
-  public dataState: any;  
+  public dataState: any;
   private subscription!: Subscription;
-  constructor(private activatedRoute: ActivatedRoute,
-    private toastService: ToastrService) { }
+  public selectedItems: ISidebarItem = { icon: '', title: '' };
+  public showSubmenu = false;
+
+
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private toastService: ToastrService,
+    private _router: Router
+    ) { }
 
   ngOnInit(): void {
-    
+
     this.dataState = history.state;
 
     if (this.dataState) {
@@ -48,7 +56,7 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  public navItems: INavItem[] = [
+  public navItems: ISidebarItem[] = [
     {
       icon: 'base-info',
       link: '/base-info/affairs',
@@ -57,7 +65,17 @@ export class SidebarComponent implements OnInit {
     {
       icon: 'general-budget',
       link: '/general-budget',
-      title: 'nicico.sidenav.generalBudget'
+      title: 'nicico.sidenav.generalBudget',
+      children:[
+        {
+          link: '/base-info/affairs',
+          title: 'nicico.sidenav.baseInfo'
+        },
+        {
+          link: '/base-info/affairs',
+          title: 'nicico.sidenav.baseInfo'
+        },
+      ]
     },
     {
       icon: 'cardboard',
@@ -72,6 +90,15 @@ export class SidebarComponent implements OnInit {
     }, 300);
   }
 
+  public menuClicked(sidebarItem: ISidebarItem): void {
+     this.showSubmenu = false;
+     this._router.navigate([sidebarItem?.link]);
+    if (sidebarItem.children) {
+      this.showSubmenu = !this.showSubmenu;
+      this.selectedItems = sidebarItem;
+    }
+  }
+
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
@@ -79,6 +106,6 @@ export class SidebarComponent implements OnInit {
   }
 
   openToast() {
-    this.toastService.error('error', 'title', {toastClass: 'error'})
+    this.toastService.error('error', 'title', { toastClass: 'error' })
   }
 }

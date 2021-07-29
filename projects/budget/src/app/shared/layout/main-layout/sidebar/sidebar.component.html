@@ -1,13 +1,15 @@
 <mat-drawer-container class="nicico-sidenav-container">
     <mat-drawer fixedTopGap="56" opened mode="side" class="nicico-sidenav" [ngClass]="{'collapse':isCollapseMenu}">
         <mat-nav-list>
-            <div class="nav-item" *ngFor="let nav of navItems" mat-list-item routerLinkActive="active">
-                <mat-icon *ngIf="isCollapseMenu" [svgIcon]="nav.icon" matTooltip="{{nav.title|translate}}"
+            <div class="nav-item" *ngFor="let item of navItems" mat-list-item routerLinkActive="active"
+                (click)="menuClicked(item)" [class.active]="item?.isActive">
+                <mat-icon *ngIf="isCollapseMenu" [svgIcon]="item.icon" matTooltip="{{item.title|translate}}"
                     matTooltipPosition="before"></mat-icon>
-                <mat-icon *ngIf="!isCollapseMenu" [svgIcon]="nav.icon"></mat-icon>
-                <a *ngIf="!isCollapseMenu" translate>{{nav.title}}</a>
+                <mat-icon *ngIf="!isCollapseMenu" [svgIcon]="item.icon"></mat-icon>
+                <a *ngIf="!isCollapseMenu" translate>{{item.title}}</a>
+                <mat-icon *ngIf="item?.children" class="small-icon" [svgIcon]="'navigate_before'"></mat-icon> 
                 <span class="notification-count"
-                    *ngIf="!isCollapseMenu&& nav.notificationCount && nav.notificationCount>0">{{nav?.notificationCount}}</span>
+                    *ngIf="!isCollapseMenu&& item.notificationCount && item.notificationCount>0">{{item?.notificationCount}}</span>
             </div>
         </mat-nav-list>
         <div class="nav-list-footer">

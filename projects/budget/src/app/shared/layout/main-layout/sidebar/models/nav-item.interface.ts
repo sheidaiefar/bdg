@@ -1,12 +1,13 @@
-export interface INavItem {
+export interface ISidebarItem {
   icon: string;
   link?: string;
   title: string;
   notificationCount?: number;
-  children?:INavItemChild[];
+  children?: ISidebarChild[];
+  isActive?: boolean;
 }
 
-export interface INavItemChild {
+export interface ISidebarChild {
   link?: string;
   title: string;
 }
