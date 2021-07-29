@@ -1,0 +1,8 @@
+  <div [ngClass]="options.toastClass">
+    <mat-icon svgIcon="{{options.toastClass}}" class="toast-icon-{{options.toastClass}}"></mat-icon>
+    <div class="toastMessageBox">
+      <h4 class="toast-title-{{options.toastClass}}">{{title ? title : toastDefaultTitle}}</h4>
+      <p class="toast-message-{{options.toastClass}}">{{message}}</p>
+    </div>
+    <mat-icon svgIcon="close" class="close-{{options.toastClass}}" (click)="remove()"></mat-icon>
+  </div>

@@ -1,0 +1,8 @@
+{
+  "nicico": {
+    "action": {
+      "changePassword": "تغییر رمز عبور",
+      "logout": "خروج"
+    }
+  }
+}

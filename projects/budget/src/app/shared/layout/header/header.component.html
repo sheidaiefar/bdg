@@ -1,0 +1,61 @@
+<div class="nicico-header">
+  <div class="logo-box">
+    <img src="../../../../assets/images/logo.png" alt="NICICO"/>
+    <div class="title">
+      <h2 translate>nicico.general.budgetSystem
+      </h2>
+      <p translate>دوره منتهی به سه ماه دوم سال 1400</p>
+    </div>
+  </div>
+  <div class="navigation-bar">&nbsp;
+  </div>
+  <div class="profile-box">
+    <div class="notification">
+      <button
+        mat-icon-button
+        (click)="notificationMenu.openMenu()"
+      >
+        <mat-icon matBadge="4" svgIcon="notification"></mat-icon>
+      </button>
+      <nicico-dynamic-menu
+        [config]="notificationListConfig"
+        #notificationMenu
+      ></nicico-dynamic-menu>
+
+    </div>
+    <div class="setting">
+      <button mat-icon-button>
+        <mat-icon svgIcon="setting" routerLink="/setting"></mat-icon>
+      </button>
+    </div>
+    <div class="separator"></div>
+    <div class="profile">
+      <div class="title">
+        <h2 translate>بهنام عبادی</h2>
+        <p translate>مدیر واحد بودجه</p>
+      </div>
+      <div class="avatar">
+        <div class="overlay">
+          <mat-icon svgIcon="edit"></mat-icon>
+        </div>
+        <img
+          [src]="
+            'assets/images/avatar.jpg' || 'assets/images/default-avatar.jpg'
+          "
+          alt="avatar"
+        />
+      </div>
+      <button
+        class="open-menu-btn"
+        mat-icon-button
+        (click)="dynamicMenu.openMenu()"
+      >
+        <mat-icon class="arrow-down" svgIcon="arrow-down"></mat-icon>
+      </button>
+      <nicico-dynamic-menu
+        [config]="profileMenuConfig"
+        #dynamicMenu
+      ></nicico-dynamic-menu>
+    </div>
+  </div>
+</div>

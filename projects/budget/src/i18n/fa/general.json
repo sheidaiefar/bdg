@@ -1,0 +1,17 @@
+{
+  "nicico": {
+    "general": {
+      "brand": "سامانه یکپارچه اطلاعاتی",
+      "version": "نسخه 1.12",
+      "company": "شرکت ملی صنایع مس ایران",
+      "requiredError": "پر کردن این فیلد الزامیست",
+      "patternError": "الگوی وارد شده صحیح نیست",
+      "setting": "تنظیمات",
+      "system": "سامانه‌ها",
+      "changePassword": "تغییر رمز عبور",
+      "notification": "اعلان‌ها",
+      "home": "صفحه اصلی",
+      "budgetSystem": "سیستم بودجه"
+    }
+  }
+}

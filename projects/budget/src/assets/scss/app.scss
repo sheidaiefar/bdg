@@ -1,0 +1,73 @@
+* {
+  font-family: 'Yekan', 'YekanWeb', YekanWeb, Tahoma, Arial, sans-serif !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.title {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #324458 !important;
+  margin: 0 !important;
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+    max-width: 100vw !important;
+  }
+
+  .mat-dialog-container {
+    padding: 0 !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+    background: unset !important;
+  }
+
+  .mat-form-field-flex > .mat-form-field-infix {
+    padding: 0.4em 0 !important;
+  }
+
+  .mat-form-field-flex {
+    height: 42px;
+  }
+
+  .mat-form-field-infix {
+    .mat-input-element, .mat-select {
+      line-height: 16px;
+    }
+  }
+
+  .mat-select-arrow-wrapper {
+    transform: none !important;
+
+    .mat-select-arrow {
+      border-left: 12px solid transparent !important;
+      border-right: none !important;
+      border-top: 8px solid transparent !important;
+      border-image-source: url('../../assets/images/arrow-down.png') !important;
+      border-image-repeat: stretch !important;
+    }
+  }
+
+  .mat-form-field-suffix {
+    top: .15em !important;
+  }
+
+  .mat-form-field-label-wrapper {
+    top: -1.5em;
+
+  }
+
+  .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+  }
+}
+
+.custom-class {
+  background: white !important;
+  border-radius: 5px !important;
+}
+

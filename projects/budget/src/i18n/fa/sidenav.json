@@ -1,0 +1,17 @@
+{
+  "nicico": {
+    "sidenav": {
+      "baseInfo": "اطلاعات پایه",
+      "generalBudget": "عمومی بودجه",
+      "cardboard": "کارتابل",
+      "users": "مدیریت کاربران",
+      "apps": "مدیریت برنامه‌ها",
+      "tokens": "مدیریت شناسه‌ها",
+      "notifications": "اعلان‌ها",
+      "tools": "ابزارها",
+      "dashboard": "داشبورد",
+      "tickets": "تیکت‌ها",
+      "setting": "تنظیمات"
+    }
+  }
+}

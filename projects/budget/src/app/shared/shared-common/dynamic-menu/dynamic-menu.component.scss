@@ -1,0 +1,79 @@
+::ng-deep {
+  .mat-elevation-z4 {
+    box-shadow: 0px 2px 4px -1px rgba(100, 100, 100, 0.1),
+      0px 4px 5px 0px rgba(200, 200, 200, 0.1),
+      0px 1px 10px 0px rgba(100, 100, 100, 0.1) !important;
+  }
+
+  .mat-menu-panel {
+    width: fit-content !important;
+    max-width: fit-content !important;
+  }
+
+  .clickable {
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  .dynamic-menu {
+    .menu-header {
+      padding-right: 1rem;
+      padding-bottom: 0.5rem;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .menu-body {
+      max-height: 28.5rem;
+      overflow-y: auto;
+    }
+
+    .menu-footer {
+      text-align: center;
+      color: gray;
+
+      h3 {
+        margin: 0;
+        margin-bottom: -5px;
+        cursor: pointer;
+      }
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid white;
+      position: absolute;
+      top: -8px;
+      filter: drop-shadow(0 -6mm 4mm rgb(160, 0, 210));
+    }
+
+    .dynamic-menu-item {
+      font-size: 13px;
+      padding-right: 1.5rem;
+
+      &:hover {
+        mat-icon,
+        span {
+          color: darken(#bcbccb, 40) !important;
+        }
+      }
+
+      mat-icon {
+        width: 30px;
+      }
+
+      span {
+        color: #959595;
+      }
+    }
+  }
+}
+.menu-btn{
+  visibility: hidden;
+  //border: 1px solid #324458;
+}

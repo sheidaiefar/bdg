@@ -1,0 +1,63 @@
+<button
+  [matMenuTriggerFor]="menu"
+  class="menu-btn"
+  [style.top.rem]="config.topOffset"
+  [style.left.rem]="config.leftOffset"
+  [style.marginTop.rem]="3.8"
+></button>
+<mat-menu
+  #menu="matMenu"
+  class="dynamic-menu"
+  xPosition="before"
+  yPosition="above"
+  [overlapTrigger]="false"
+
+>
+  <div [style.width.rem]="config.menuWidth"
+
+  >
+    <div
+      class="triangle"
+      [style.left.rem]="config.pointerLeftOffset || 2"
+      [style.top.rem]="config.pointerTopOffset || -0.5"
+    ></div>
+    <div *ngIf="config?.header" class="menu-header">
+      <h3
+        *ngIf="config?.header?.onClick"
+        (click)="onHeaderClick()"
+        class="clickable"
+      >
+        {{ config?.header?.title }}
+      </h3>
+      <h1 *ngIf="!config?.header?.onClick">{{ config?.header?.title }}</h1>
+    </div>
+    <div class="menu-body">
+      <ng-container *ngFor="let item of config.itemList">
+        <ng-container *ngIf="item">
+          <ng-container *ngIf="item?.customComponent; else regularItem">
+            <div
+              [customComponent]="item?.customComponent"
+              [data]="item?.customData"
+            ></div>
+          </ng-container>
+          <ng-template #regularItem>
+            <button
+              class="dynamic-menu-item"
+              mat-menu-item
+              (click)="onItemClick(item)"
+            >
+              <mat-icon svgIcon="{{ item.icon }}"></mat-icon>
+              <span translate>{{ item.title }}</span>
+            </button>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div *ngIf="config?.footer" class="menu-footer" (click)="onFooterClick()">
+      <h3 *ngIf="config?.footer?.onClick" class="clickable">
+        {{ config?.footer?.title }}
+      </h3>
+      <h3 *ngIf="!config?.footer?.onClick">{{ config?.footer?.title }}</h3>
+    </div>
+  </div>
+</mat-menu>

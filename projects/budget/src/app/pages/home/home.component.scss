@@ -1,0 +1,33 @@
+@import "../../../assets/scss/variables";
+
+@mixin apply-to-page-content {
+  color: #D9D9D9;
+  @content
+}
+
+$sizes: 24,
+19,
+13;
+
+@each $size in $sizes {
+  .font-#{$size} {
+    font-size: #{$size}px;
+    font-weight: bold;
+  }
+}
+
+.main-container {
+  @include apply-to-page-content;
+  background-color: $white;
+  height: 83vh;
+  width: 98%;
+  margin: {
+    top: 40px;
+    right: 17px;
+  }
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

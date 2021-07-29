@@ -1,0 +1,7 @@
+<div class="nicico-breadcrumb">
+  <div class="breadcrumb-item" [class.current-route]="!item.url" *ngFor="let item of data; let last = last;">
+    <a (click)="routeUrl(item?.url, item?.breadcrumbs)">{{ item.label! | translate }}</a><span *ngIf="item.url && !last"
+                                                                                               class="breadcrumb-separator">/</span>
+  </div>
+</div>
+{{'dfsfd'}}
