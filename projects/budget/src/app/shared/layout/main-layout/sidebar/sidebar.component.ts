@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IBreadcrumb } from '@app/shared/shared-common/breadcrumb/breadcrumb.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { INavItem } from '../nav-item.interface';
+import { INavItem } from './models/nav-item.interface';
 
 @Component({
   selector: 'nicico-sidebar',
@@ -51,7 +51,7 @@ export class SidebarComponent implements OnInit {
   public navItems: INavItem[] = [
     {
       icon: 'base-info',
-      link: '/base-info',
+      link: '/base-info/affairs',
       title: 'nicico.sidenav.baseInfo'
     },
     {

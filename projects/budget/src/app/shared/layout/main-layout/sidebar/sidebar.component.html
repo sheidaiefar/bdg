@@ -1,27 +1,26 @@
 <mat-drawer-container class="nicico-sidenav-container">
     <mat-drawer fixedTopGap="56" opened mode="side" class="nicico-sidenav" [ngClass]="{'collapse':isCollapseMenu}">
-      <mat-nav-list>
-        <div class="nav-item" *ngFor="let nav of navItems" mat-list-item
-             routerLinkActive="active">
-          <mat-icon *ngIf="isCollapseMenu" [svgIcon]="nav.icon" matTooltip="{{nav.title|translate}}"
+        <mat-nav-list>
+            <div class="nav-item" *ngFor="let nav of navItems" mat-list-item routerLinkActive="active">
+                <mat-icon *ngIf="isCollapseMenu" [svgIcon]="nav.icon" matTooltip="{{nav.title|translate}}"
                     matTooltipPosition="before"></mat-icon>
-          <mat-icon *ngIf="!isCollapseMenu" [svgIcon]="nav.icon"></mat-icon>
-          <a *ngIf="!isCollapseMenu" translate>{{nav.title}}</a>
-          <span class="notification-count"
-                *ngIf="!isCollapseMenu&& nav.notificationCount && nav.notificationCount>0">{{nav?.notificationCount}}</span>
-        </div>
-      </mat-nav-list>
-      <div class="nav-list-footer">
-        <span class="small-menu-btn" (click)="expandCollapseMenu()" mat-ripple>
-          <mat-icon class="small-menu-icon" svgIcon="navigate_before"
+                <mat-icon *ngIf="!isCollapseMenu" [svgIcon]="nav.icon"></mat-icon>
+                <a *ngIf="!isCollapseMenu" translate>{{nav.title}}</a>
+                <span class="notification-count"
+                    *ngIf="!isCollapseMenu&& nav.notificationCount && nav.notificationCount>0">{{nav?.notificationCount}}</span>
+            </div>
+        </mat-nav-list>
+        <div class="nav-list-footer">
+            <span class="small-menu-btn" (click)="expandCollapseMenu()" mat-ripple>
+                <mat-icon class="small-menu-icon" svgIcon="navigate_before"
                     [ngClass]="{'menu-collapse':isCollapseMenu,'menu-expand':!isCollapseMenu}"></mat-icon>
-        </span>
-      </div>
+            </span>
+        </div>
     </mat-drawer>
     <div class="navigation-bar-breadcrumb">
-      <nicico-breadcrumb [data]="breadcrumb"></nicico-breadcrumb>
+        <nicico-breadcrumb [data]="breadcrumb"></nicico-breadcrumb>
     </div>
     <mat-drawer-content class="page-content" [class.expand]="isCollapseMenu">
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
     </mat-drawer-content>
-  </mat-drawer-container>
+</mat-drawer-container>
