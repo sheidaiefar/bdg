@@ -1,7 +1,6 @@
-<ng-container *ngFor="let subItem of subMenu" class="sidebar-children-container">
+<ng-container *ngFor="let subItem of subMenu">
     <li class="item" (click)="$event.stopPropagation(); redirect(subItem)"
         [ngClass]="{'active' : (subItem?.isActive) , 'hidden': !subItem?.title}">
-        <!-- <h6>{{ subItem?.title | translate }}</h6> -->
-        <h6>{{ subItem?.title }}</h6>    
+       <h6 translate class="child-title">{{ subItem?.title }}</h6>
     </li>
 </ng-container>

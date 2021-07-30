@@ -1,24 +1,23 @@
 @import '~@angular/material/theming';
 @import "../../../../../../assets/scss/variables";
 
-.sidebar-children-container {
-        //height: calc(100% - 60px);
-        
-         
-}
-     
-        .item {       
+   
+    .item {       
         //    border:2px red solid;    
-          width: 200px;
-          background:white;
+          width: 160px;
+          background:rgba(255, 255, 255, .6);;
           color:  #324458;
           transition: width $animationDuration;
           overflow: hidden !important;
+          font-size: small !important;
+          font-family: 'YekanWeb';
+           margin-right: 5px;
           &:hover {
-            background-color: lighten(#324458, 10) !important;
-            color: white;
+            // background-color: lighten(#324458, 10) !important;
+            // color: white;
             padding-right: 10px;
-            border-right: 5px solid $primary;
+            cursor: pointer;
+            // border-right: 5px solid $primary;
             transition-duration: $animationDuration;
           }
       
@@ -26,31 +25,24 @@
             border-right: 5px solid $primary;
           }
       
-          .nav-item {
+           h6 {       
+            font-size: small;                  
+            color: black;
+            height: 2rem;
             display: flex;
-            color: rgba(255, 255, 255, .6);
-            height: 4rem;
             padding-right: 15px;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, .1);
-            cursor: pointer;
+            font-family: 'YekanWeb';
+            border-bottom: 1px solid rgba(255, 255, 255, .1);            
             outline: none;
     
-                 
-              
-           
-            a {
-              color: rgba(255, 255, 255, .6);
-              margin-right: 1rem;
+            .child-title{
+                font-size: medium !important;
+                 font-family: 'YekanWeb';
+                  margin-right: 5px;
             }
+
       
-            &:hover {
-              background-color: lighten(#324458, 10) !important;
-              color: white;
-              padding-right: 10px;
-              border-right: 5px solid $primary;
-              transition-duration: $animationDuration;
-            }
           }
 }
 
