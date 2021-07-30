@@ -10,20 +10,26 @@
   $accent: map-get($config, accent);
   $warn: map-get($config, warn);
 
-  // Define any styles affected by the theme.
-  .layout {
-    margin: 0 !important;
-    // Use mat-color to extract individual colors from a palette.
-    background-color: mat-color($primary);
-    border-color: mat-color($warn, A400);
-  }
 }
 
+.main-container{
+  height: 93.3vh;
+  border:2px yellow solid;
+  flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: flex-start;
+	align-content: stretch;
+}
 
 .nicico-sidenav-container {
     //height: calc(100% - 60px);
     height: 93.3vh;
-  
+    border:2px green solid;
+    width: 200px;
+    top:0;
+    display: inline-block;
+
     .nicico-sidenav {
       width: 200px;
       background: #324458;
@@ -131,7 +137,34 @@
         }
       }
     }
-  
+
+  .mini-sidebar-container{    
+       height: 93.3vh ;
+        border:5px rgb(255, 196, 0) solid; 
+        width: 300px;
+        display: inline-block;
+        background-color: rgb(78, 116, 103);
+        height: 100%;
+        top: 0;
+        overflow: auto;
+        margin-right: 50px;
+        background-color: var(--white);
+        z-index: 0;
+        left: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        transition: all 0.3s linear;
+        &.active-submenu {
+          transition: all 0.2s ease-in-out;
+          transform: translateX(0);
+          z-index: 10;
+        }
+        ul {
+          width: 100%;    
+          position: absolute;
+        }
+  }
+
     .page-content {
       margin-right: 200px !important;
       transition-duration: $animationDuration;
@@ -158,6 +191,14 @@
         margin: 0 30px;
       }
     }
+  }
+
+  .mini-sidebar{
+    right:66px;
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    background-color: whitesmoke;
   }
 
   ::ng-deep.mat-drawer-inner-container {

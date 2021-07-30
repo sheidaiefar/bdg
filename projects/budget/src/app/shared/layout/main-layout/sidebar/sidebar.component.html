@@ -1,34 +1,37 @@
-<mat-drawer-container class="nicico-sidenav-container">
-    <mat-drawer fixedTopGap="56" opened mode="side" class="nicico-sidenav" [ngClass]="{'collapse':isCollapseMenu}">
-        <mat-nav-list>
-            <div class="mini-sidebar-container" [ngClass]="{'active-submenu': showSubmenu}">
-                <ul>
-                     <nicico-sidebar-children *ngIf="activatedChildren" [subMenu]="activatedChildren" ></nicico-sidebar-children>
-                </ul>
-            </div>
-            
-            <div class="nav-item" *ngFor="let item of navItems" mat-list-item routerLinkActive="active"
-                (click)="menuClicked(item)" [class.active]="item?.isActive">
-                <mat-icon *ngIf="isCollapseMenu" [svgIcon]="item.icon" matTooltip="{{item.title|translate}}"
-                    matTooltipPosition="before"></mat-icon>
-                <mat-icon *ngIf="!isCollapseMenu" [svgIcon]="item.icon"></mat-icon>
-                <a *ngIf="!isCollapseMenu" translate>{{item.title}}</a>
-                <mat-icon *ngIf="item?.children" class="small-icon" [svgIcon]="'navigate_before'"></mat-icon>
-                <span class="notification-count"
-                    *ngIf="!isCollapseMenu&& item.notificationCount && item.notificationCount>0">{{item?.notificationCount}}</span>
-            </div>
-        </mat-nav-list>
-        <div class="nav-list-footer">
-            <span class="small-menu-btn" (click)="expandCollapseMenu()" mat-ripple>
-                <mat-icon class="small-menu-icon" svgIcon="navigate_before"
-                    [ngClass]="{'menu-collapse':isCollapseMenu,'menu-expand':!isCollapseMenu}"></mat-icon>
-            </span>
-        </div>
-    </mat-drawer>
-    <div class="navigation-bar-breadcrumb">
-        <nicico-breadcrumb [data]="breadcrumb"></nicico-breadcrumb>
+<div class="main-container">
+    <div class="mini-sidebar-container" [ngClass]="{'active-submenu': showSubmenu}">
+        <ul>
+            <nicico-sidebar-children *ngIf="activatedChildren && showSubmenu" [subMenu]="activatedChildren"
+                class="mini-sidebar">
+            </nicico-sidebar-children>
+        </ul>
     </div>
-    <mat-drawer-content class="page-content" [class.expand]="isCollapseMenu">
-        <router-outlet></router-outlet>
-    </mat-drawer-content>
-</mat-drawer-container>
+    <mat-drawer-container class="nicico-sidenav-container">
+        <mat-drawer fixedTopGap="56" opened mode="side" class="nicico-sidenav" [ngClass]="{'collapse':isCollapseMenu}">
+            <mat-nav-list>
+                <div class="nav-item" *ngFor="let item of navItems" mat-list-item routerLinkActive="active"
+                    (click)="menuClicked(item)" [class.active]="item?.isActive">
+                    <mat-icon *ngIf="isCollapseMenu" [svgIcon]="item.icon" matTooltip="{{item.title|translate}}"
+                        matTooltipPosition="before"></mat-icon>
+                    <mat-icon *ngIf="!isCollapseMenu" [svgIcon]="item.icon"></mat-icon>
+                    <a *ngIf="!isCollapseMenu" translate>{{item.title}}</a>
+                    <mat-icon *ngIf="item?.children" class="small-icon" [svgIcon]="'navigate_before'"></mat-icon>
+                    <span class="notification-count"
+                        *ngIf="!isCollapseMenu&& item.notificationCount && item.notificationCount>0">{{item?.notificationCount}}</span>
+                </div>
+            </mat-nav-list>
+            <div class="nav-list-footer">
+                <span class="small-menu-btn" (click)="expandCollapseMenu()" mat-ripple>
+                    <mat-icon class="small-menu-icon" svgIcon="navigate_before"
+                        [ngClass]="{'menu-collapse':isCollapseMenu,'menu-expand':!isCollapseMenu}"></mat-icon>
+                </span>
+            </div>
+        </mat-drawer>
+        <div class="navigation-bar-breadcrumb">
+            <nicico-breadcrumb [data]="breadcrumb"></nicico-breadcrumb>
+        </div>
+        <mat-drawer-content class="page-content" [class.expand]="isCollapseMenu">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

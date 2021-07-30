@@ -91,11 +91,12 @@ export class SidebarComponent implements OnInit {
 
   public menuClicked(sidebarItem: ISidebarItem): void {
     this.showSubmenu = false;
+    this.isCollapseMenu=!this.isCollapseMenu;
     this._router.navigate([sidebarItem?.url]);
     if (sidebarItem.children) {
       this.showSubmenu = !this.showSubmenu;
       this.activatedChildren = sidebarItem.children;
-      debugger;
+      this.isCollapseMenu=true;
     }
   }
 
