@@ -9,7 +9,7 @@
     <mat-drawer-container class="nicico-sidenav-container">
         <mat-drawer fixedTopGap="56" opened mode="side" class="nicico-sidenav" [ngClass]="{'collapse':isCollapseMenu}">
             <mat-nav-list>
-                <div class="nav-item" *ngFor="let item of navItems" mat-list-item routerLinkActive="active"
+                <div class="nav-item" *ngFor="let item of sidebarData" mat-list-item routerLinkActive="active"
                     (click)="menuClicked(item)" [class.active]="item?.isActive">
                     <mat-icon *ngIf="isCollapseMenu" [svgIcon]="item.icon" matTooltip="{{item.title|translate}}"
                         matTooltipPosition="before"></mat-icon>

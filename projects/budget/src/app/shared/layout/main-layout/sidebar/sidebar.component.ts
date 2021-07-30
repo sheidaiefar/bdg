@@ -3,12 +3,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IBreadcrumb } from '@app/shared/shared-common/breadcrumb/breadcrumb.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { MenuData } from './menu-data';
 import { ISidebarChild, ISidebarItem } from './models/nav-item.interface';
 
 @Component({
   selector: 'nicico-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  providers: [
+    MenuData
+  ]
 })
 export class SidebarComponent implements OnInit {
   public isCollapseMenu = false;
@@ -17,14 +21,18 @@ export class SidebarComponent implements OnInit {
   private subscription!: Subscription;
   public activatedChildren: ISidebarChild[] = [];
   public showSubmenu = false;
+  public sidebarData: ISidebarItem[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private toastService: ToastrService,
-    private _router: Router
+    private _router: Router,
+    private menuData: MenuData
   ) { }
 
   ngOnInit(): void {
+    this.sidebarData = this.menuData.menuData;
+
     this.dataState = history.state;
     if (this.dataState) {
       delete this.dataState.navigationId;
@@ -50,38 +58,7 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  public navItems: ISidebarItem[] = [
-    {
-      icon: 'base-info',
-      url: '/base-info/affairs',
-      title: 'nicico.sidenav.baseInfo',
-      isActive: false,
-    },
-    {
-      icon: 'general-budget',
-      url: '/general-budget',
-      title: 'nicico.sidenav.generalBudget',
-      isActive: false,
-      children: [
-        {
-          url: '/base-info/affairs',
-          title: 'nicico.sidenav.baseInfo',
-          isActive: false,
-        },
-        {
-          url: '/base-info/affairs',
-          title: 'nicico.sidenav.baseInfo',
-          isActive: false,
-        },
-      ]
-    },
-    {
-      icon: 'cardboard',
-      url: '/cardboard',
-      title: 'nicico.sidenav.cardboard',
-      isActive: false,
-    }
-  ];
+
 
   expandCollapseMenu(): void {
     this.isCollapseMenu = !this.isCollapseMenu;
