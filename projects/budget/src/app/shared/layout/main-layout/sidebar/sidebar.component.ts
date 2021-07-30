@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IBreadcrumb } from '@app/shared/shared-common/breadcrumb/breadcrumb.interface';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { ISidebarItem } from './models/nav-item.interface';
+import { ISidebarChild, ISidebarItem } from './models/nav-item.interface';
 
 @Component({
   selector: 'nicico-sidebar',
@@ -15,28 +15,22 @@ export class SidebarComponent implements OnInit {
   public breadcrumb: IBreadcrumb[] | undefined = [];
   public dataState: any;
   private subscription!: Subscription;
-  public selectedItems: ISidebarItem = { icon: '', title: '' };
+  public activatedChildren: ISidebarChild[] = [];
   public showSubmenu = false;
-
-
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private toastService: ToastrService,
     private _router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-
     this.dataState = history.state;
-
     if (this.dataState) {
       delete this.dataState.navigationId;
-
       for (const property in this.dataState) {
         this.breadcrumb?.push(this.dataState[property]);
       }
-
       if (!this.breadcrumb?.length) {
         this.subscription = this.activatedRoute.data.subscribe((res) => {
           this.breadcrumb = res?.breadcrumb;
@@ -59,28 +53,33 @@ export class SidebarComponent implements OnInit {
   public navItems: ISidebarItem[] = [
     {
       icon: 'base-info',
-      link: '/base-info/affairs',
-      title: 'nicico.sidenav.baseInfo'
+      url: '/base-info/affairs',
+      title: 'nicico.sidenav.baseInfo',
+      isActive: false,
     },
     {
       icon: 'general-budget',
-      link: '/general-budget',
+      url: '/general-budget',
       title: 'nicico.sidenav.generalBudget',
-      children:[
+      isActive: false,
+      children: [
         {
-          link: '/base-info/affairs',
-          title: 'nicico.sidenav.baseInfo'
+          url: '/base-info/affairs',
+          title: 'nicico.sidenav.baseInfo',
+          isActive: false,
         },
         {
-          link: '/base-info/affairs',
-          title: 'nicico.sidenav.baseInfo'
+          url: '/base-info/affairs',
+          title: 'nicico.sidenav.baseInfo',
+          isActive: false,
         },
       ]
     },
     {
       icon: 'cardboard',
-      link: '/cardboard',
-      title: 'nicico.sidenav.cardboard'
+      url: '/cardboard',
+      title: 'nicico.sidenav.cardboard',
+      isActive: false,
     }
   ];
 
@@ -91,11 +90,12 @@ export class SidebarComponent implements OnInit {
   }
 
   public menuClicked(sidebarItem: ISidebarItem): void {
-     this.showSubmenu = false;
-     this._router.navigate([sidebarItem?.link]);
+    this.showSubmenu = false;
+    this._router.navigate([sidebarItem?.url]);
     if (sidebarItem.children) {
       this.showSubmenu = !this.showSubmenu;
-      this.selectedItems = sidebarItem;
+      this.activatedChildren = sidebarItem.children;
+      debugger;
     }
   }
 

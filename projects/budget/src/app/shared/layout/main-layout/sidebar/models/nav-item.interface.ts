@@ -1,6 +1,6 @@
 export interface ISidebarItem {
   icon: string;
-  link?: string;
+  url?: string;
   title: string;
   notificationCount?: number;
   children?: ISidebarChild[];
@@ -8,6 +8,7 @@ export interface ISidebarItem {
 }
 
 export interface ISidebarChild {
-  link?: string;
+  url?: string;
   title: string;
+  isActive?: boolean;
 }

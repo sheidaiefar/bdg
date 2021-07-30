@@ -6,12 +6,14 @@ import {MainLayoutComponent} from './main-layout/main-layout.component';
 import {SharedLibModule} from '../shared-lib/shared-lib.module';
 import {SharedCommonModule} from '../shared-common/shared-common.module';
 import { SidebarComponent } from './main-layout/sidebar/sidebar.component';
+import { SidebarChildrenComponent } from './main-layout/sidebar/sidebar-children/sidebar-children.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     MainLayoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebarChildrenComponent
   ],
   imports: [
     CommonModule,
