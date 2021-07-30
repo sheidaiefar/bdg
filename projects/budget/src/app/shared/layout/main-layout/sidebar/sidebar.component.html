@@ -2,7 +2,7 @@
     <div class="mini-sidebar-container" [ngClass]="{'active-submenu': showSubmenu}">
         <ul>
             <nicico-sidebar-children *ngIf="activatedChildren && showSubmenu" [subMenu]="activatedChildren"
-                class="mini-sidebar">
+                class="mini-sidebar" (hideSubMenu)="setHideSubmenu()">
             </nicico-sidebar-children>
         </ul>
     </div>

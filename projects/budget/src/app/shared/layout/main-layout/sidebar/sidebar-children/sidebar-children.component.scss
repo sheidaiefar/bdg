@@ -2,8 +2,7 @@
 @import "../../../../../../assets/scss/variables";
 
    
-    .item {       
-        //    border:2px red solid;    
+    .item {           
           width: 160px;
           background:rgba(255, 255, 255, .6);;
           color:  #324458;
@@ -17,7 +16,7 @@
             // color: white;
             padding-right: 10px;
             cursor: pointer;
-            // border-right: 5px solid $primary;
+            border-right: 3px solid $primary;
             transition-duration: $animationDuration;
           }
       

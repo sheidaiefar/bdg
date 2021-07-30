@@ -85,20 +85,25 @@ export class SidebarComponent implements OnInit {
 
   expandCollapseMenu(): void {
     this.isCollapseMenu = !this.isCollapseMenu;
-    setTimeout(() => {
-    }, 300);
+    this.showSubmenu = false;
+    setTimeout(() => { }, 300);
   }
 
   public menuClicked(sidebarItem: ISidebarItem): void {
     this.showSubmenu = false;
-    this.isCollapseMenu=!this.isCollapseMenu;
+    this.isCollapseMenu = !this.isCollapseMenu;
     this._router.navigate([sidebarItem?.url]);
     if (sidebarItem.children) {
       this.showSubmenu = !this.showSubmenu;
       this.activatedChildren = sidebarItem.children;
-      this.isCollapseMenu=true;
+      this.isCollapseMenu = true;
     }
   }
+
+  setHideSubmenu() {
+    this.showSubmenu = false;
+  }
+
 
   ngOnDestroy(): void {
     if (this.subscription) {
